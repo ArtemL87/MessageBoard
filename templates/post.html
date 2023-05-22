@@ -1,0 +1,23 @@
+<!--  наследуемся от шаблона default.html, который мы создавали для flatpages -->
+{% extends 'flatpages/default.html' %}
+
+<!-- Название у нас будет Product -->
+{% block title %}
+Post
+{% endblock title %}
+
+<!-- В контенте на странице мы выводим сам товар, идентификатор которого был передан в url -->
+{% block content %}
+<h1> Cтатья пользовотеля с ником "{{ post.author }}" </h1>
+<hr>
+{% if post %}
+    <h3>Название статьи</h3>
+    <h4>{{ post.title_post }}</h4>
+    <h3>Дата написания статьи</h3>
+    <h5>{{ post.time_in|date:'d M Y'}}</h5>
+    <h3>Содержание</h3>
+    <h6>{{ post.text_post}}</h6>
+{% else %}
+    <h3>Такой статьи нет</h3>
+{% endif %}
+{% endblock content %}

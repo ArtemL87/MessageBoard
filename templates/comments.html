@@ -1,0 +1,48 @@
+<!--  наследуемся от шаблона default.html, который мы создавали для flatpages -->
+{% extends 'flatpages/default.html' %}
+
+
+<!-- Название у нас будет -->
+{% block title %}
+Post
+{% endblock title %}
+
+<!-- В контенте на странице мы выводим -->
+{% block content %}
+    <h1>Все коментарии</h1>
+    <hr>
+
+    {% if comment %}
+        <table>
+            <tr>
+                <td>Название поста</td>
+                <td> | </td>
+                <td>Автор поста</td>
+                <td> | </td>
+                <td>Дата публикации коментария</td>
+                <td> | </td>
+                <td>Автор комментария</td>
+                <td> | </td>
+                <td>Коментарий</td>
+            </tr>
+
+            {% for i in comment %}
+                <tr>
+                    <td>{{ i.post_com}}</td>
+                    <td> | </td>
+                    <td>{{ i.post_com.author}}</td>
+                    <td> | </td>
+                    <td>{{ i.time_in|date:'d M Y'}}</td>
+                    <td> | </td>
+                    <td>{{ i.user_com }}</td>
+                    <td> | </td>
+                    <td>{{ i.comment }}</td>
+                </tr>
+            {% endfor %}
+
+        </table>
+    {% else %}
+        <h2>Коментариев нет</h2>
+    {% endif %}
+
+{% endblock content %}

@@ -1,0 +1,22 @@
+<!--  наследуемся от шаблона default.html, который мы создавали для flatpages -->
+{% extends 'flatpages/default.html' %}
+
+<!-- Название у нас будет Product -->
+{% block title %}
+Comment
+{% endblock title %}
+
+{% block content %}
+<h1> Комментарий к статье "{{ comment.post_com }}" </h1>
+<hr>
+{% if comment %}
+    <h3>Автор комментария</h3>
+    <h4>{{ comment.user_com }}</h4>
+    <h3>Дата написания комментария</h3>
+    <h5>{{ comment.time_in|date:'d M Y'}}</h5>
+    <h3>Содержание</h3>
+    <h6>{{ comment.comment}}</h6>
+{% else %}
+    <h3>Такого комментария нет</h3>
+{% endif %}
+{% endblock content %}
